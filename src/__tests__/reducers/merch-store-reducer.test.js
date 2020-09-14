@@ -99,4 +99,36 @@ describe('merchStoreReducer', () => {
 			},
 		});
 	});
+
+	test('should add an additional product without complaint', () => {
+		const action = {
+			type: 'ADD_PRODUCT',
+			name: 'name3',
+			price: 3.0,
+			description: 'desc3',
+			id: 3,
+		};
+		expect(merchStoreReducer(currentState, action)).toEqual({
+			masterList: {
+				1: {
+					name: 'testProduct',
+					price: 5.0,
+					description: 'testDescription',
+					id: 1,
+				},
+				2: {
+					name: 'testProduct2',
+					price: 2.0,
+					description: 'testDescription2',
+					id: 2,
+				},
+				3: {
+					name: 'name3',
+					price: 3.0,
+					description: 'desc3',
+					id: 3,
+				},
+			},
+		});
+	});
 });
